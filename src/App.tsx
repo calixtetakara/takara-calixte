@@ -1,4 +1,3 @@
-import React from 'react';
 import Accueil from './composants/accueil';
 
 function App() {
