@@ -12,7 +12,7 @@ const Navbar: React.FC = () => {
         <div className="flex-shrink-0">
           <a href="/" className="flex items-center justify-center w-10 h-10 md:w-14 md:h-14 rounded-full bg-white shadow-md overflow-hidden">
             <img
-              src="/logo.png"        // remplacez par le chemin de votre logo
+              src="/logoc.jpg"        // remplacez par le chemin de votre logo
               alt="Logo"
               className="w-full h-full object-cover"
             />
@@ -41,13 +41,13 @@ const Navbar: React.FC = () => {
             </svg>
           </a>
           {/* Contact (icône utilisateur) */}
-          <a href="#" className="text-gray-600 hover:text-yellow-600 transition" aria-label="Contact">
+          <a href="tel:+22893604712" className="text-gray-600 hover:text-yellow-600 transition" aria-label="Contact">
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
             </svg>
           </a>
           {/* Email */}
-          <a href="#" className="text-gray-600 hover:text-yellow-600 transition" aria-label="Email">
+          <a href="mailto:calixtetakara5@gmail.com" className="text-gray-600 hover:text-yellow-600 transition" aria-label="Email">
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
             </svg>
