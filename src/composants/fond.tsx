@@ -15,7 +15,7 @@ const Fond: React.FC<FondProps> = ({
   imageUrl = "/background.jpg",
   children,
   height = "min-h-screen",
-  overlayOpacity = 0.02,
+  overlayOpacity = 0.3,
 }) => {
   return (
     <div
