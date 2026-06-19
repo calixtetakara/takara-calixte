@@ -1,24 +1,28 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
-// Importation du plugin PWA compatible avec votre version de Vite
 import { VitePWA } from 'vite-plugin-pwa';
 
-// https://vite.dev/config/
+// https://vite.dev
 export default defineConfig({
   plugins: [
     react(),  
     tailwindcss(),
-    // Ajout et configuration de la PWA sans toucher à vos autres plugins
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.ico', 'logo1.png', 'apple-touch-icon.png'],
+      // CORRECTION 1 : On ajoute explicitement vos images principales dans les assets de base
+      includeAssets: ['favicon.ico', 'logo1.png', 'apple-touch-icon.png', 'My.jpg', 'calixte.png'],
+      
+      // CORRECTION 2 : Configuration de Workbox pour mettre en cache TOUTES les images automatiquement
+      workbox: {
+        globPatterns: ['**/*.{js,css,html,ico,png,svg,jpg,jpeg,webp}'], // Cache tous les formats d'images du projet
+      },
       manifest: {
         name: 'TAKARA K. Calixte — Portfolio',
         short_name: 'Takara Calixte',
         description: 'Portfolio de TAKARA K. Calixte — Développeur Architecture Logicielle & Graphiste',
-        theme_color: '#FFFFFF',       // Supprime la barre noire du navigateur sur téléphone
-        background_color: '#FFFFFF',  // Remplace l'écran noir de chargement par du blanc pur
+        theme_color: '#FFFFFF',       
+        background_color: '#FFFFFF',  
         display: 'standalone',
         orientation: 'portrait',
         scope: '/',
@@ -38,7 +42,7 @@ export default defineConfig({
             src: 'logo1.png',
             sizes: '512x512',
             type: 'image/png',
-            purpose: 'any maskable' // Permet d'adapter la forme de l'icône sur Android (rond, carré)
+            purpose: 'any maskable' 
           }
         ]
       }
