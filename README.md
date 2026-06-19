@@ -1,73 +1,80 @@
-# React + TypeScript + Vite
+# Portfolio Numerique — TAKARA Kondeabalo Calixte
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<p align="center">
+  <img src="public/logo.png" alt="Logo" width="120" height="120" style="border-radius: 50%"/>
+</p>
 
-Currently, two official plugins are available:
+<p align="center">
+  <strong>Developpeur Web & Mobile | Graphiste Designer</strong><br>
+  Etudiant en Licence Professionnelle — Architecture Logicielle (L2) à l'Universite de Kara.
+</p>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+<p align="center">
+  <a href="https://github.com">
+    <img src="https://shields.io" alt="GitHub Follow">
+  </a>
+</p>
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## A propos de moi
 
-## Expanding the ESLint configuration
+Originaire du Togo, j'allie la rigueur du code a la sensibilite du design. Etudiant en developpement web, mobile et graphiste, je dedie mon parcours a l'excellence numerique.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Pour moi, le developpement est un art de la structure : je code pour concevoir des solutions fluides, robustes et evolutives. Ma maitrise du design me permet de penser l’experience utilisateur globale pour batir des applications aussi esthetiques qu'intuitives.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Stack Technologique & Competences
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Developpement Software
+* **Frontend :** React.js, TypeScript, Tailwind CSS, Framer Motion, HTML5 / CSS3
+* **Backend & Base de donnees :** Node.js, Express, MongoDB
+* **Mobile :** Conception d'interfaces applicatives natives et fluides
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### Design Graphique
+* **Identite Visuelle :** Creation de chartes graphiques et logos corporatifs
+* **Supports Print :** Conception d'affiches evenementielles, flyers, depliants et brochures
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Structure du Projet
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Ce portfolio est developpe sous forme d'une application Single Page (SPA) moderne et reactive, articulee autour des composants suivants :
+* **HeroSection :** Accueil immersif avec effet cascade de texte et animations fluides.
+* **ServicesSection :** Presentation des facettes d'expertises (Web, Mobile, Design) avec un effet de micro-interactions au survol.
+* **AboutSection (Artiste) :** Manifeste de developpement, vision professionnelle et parcours academique chronologique detaille.
+* **ProjectsSection :** Grille de realisations recentes avec redirection vers les depots de code et les maquettes associees.
+* **ContactSection :** Formulaire minimaliste avec effet de bouton ascendant et Scroll Spy dynamique synchronise avec la barre de navigation.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Installation et Lancement Local
+
+Ce projet a ete initialise avec l'environnement Vite / React / TypeScript. Pour l'executer en local :
+
+1. **Cloner le repository :**
+   ```bash
+   git clone https://github.com/Mon-portfolio-github.git
+   ```
+
+2. **Acceder au dossier du projet :**
+   ```bash
+   cd Mon-portfolio-github
+   ```
+
+3. **Installer les dependances :**
+   ```bash
+   npm install
+   ```
+
+4. **Lancer le serveur de developpement :**
+   ```bash
+   npm run dev
+   ```
+
+## Projets Connexes
+En parallele de ce site vitrine, je developpe des architectures logicielles back-end :
+* **API_librairies :** Une API Express/MongoDB robuste concue pour la gestion de bibliotheques.
+
+## Me Contacter
+* **Email :** calixtetakara5@gmail.com
+* **LinkedIn :** https://linkedin.com
+* **Telephone / WhatsApp :** +228 93 60 47 12
+
+---
+<p align="center">Concu avec rigueur et passion par Calixte Takara. © 2026</p>

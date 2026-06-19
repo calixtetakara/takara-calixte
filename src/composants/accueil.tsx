@@ -8,15 +8,17 @@ import HeroSection from '../composants/layout/HeroSection';
 
 const Accueil: React.FC = () => {
   return (
-    <Fond imageUrl="/background.jpg">
+    
       <div className="flex flex-col min-h-screen ">
-        <Navbar />
-         <HeroSection />
-         
+        <Fond imageUrl="/background.jpg">
+           <Navbar />
+            <HeroSection />
+         </Fond>
+       
         {/* Le reste de votre contenu (HeroSection, etc.) */}
 
       </div>
-    </Fond>
+    
   );
 };
 

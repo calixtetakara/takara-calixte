@@ -1,107 +1,191 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { FiLinkedin, FiPhone, FiMail, FiMenu, FiX } from 'react-icons/fi';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('#');
 
-  const navLinks = ['Accueil', 'Compétences', 'Parcours', 'Mes Projets'];
+  const navLinks = [
+    { name: 'Accueil', href: '#' },
+    { name: 'Expertises', href: '#services' }, 
+    { name: 'Mes Projets', href: '#projets' }, 
+    { name: 'Parcours', href: '#artiste' },    
+    { name: 'Contact', href: '#contact' }      
+  ];
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Si l'utilisateur est tout en haut, on active l'Accueil d'office
+      if (window.scrollY < 120) {
+        setActiveSection('#');
+        return;
+      }
+
+      const sections = ['services', 'projets', 'artiste', 'contact'];
+      let currentSection = '#';
+
+      // Parcourir les sections pour trouver celle qui occupe le tiers supérieur de l'écran
+      for (const id of sections) {
+        const element = document.getElementById(id);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          // Une section est considérée comme active si son sommet est proche du haut de l'écran
+          if (rect.top <= window.innerHeight / 3 && rect.bottom >= window.innerHeight / 3) {
+            currentSection = `#${id}`;
+            break;
+          }
+        }
+      }
+
+      setActiveSection(currentSection);
+    };
+
+    // Déclenchement immédiat au chargement + écoute sur le défilement global
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); 
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   return (
     <>
-      <nav className="fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl z-50 bg-white/90 backdrop-blur-md rounded-full shadow-md px-6 flex items-center justify-between h-16 md:h-20">
-        {/* Logo dans un rond (agrandi) */}
+      <nav 
+        className="fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl z-50 bg-white/90 backdrop-blur-md rounded-full shadow-[0_10px_30px_rgba(0,0,0,0.04)] px-6 flex items-center justify-between h-16 md:h-20 border border-gray-100/50"
+        style={{ fontFamily: "'Poppins', sans-serif" }}
+      >
+        {/* Logo */}
         <div className="flex-shrink-0">
-          <a href="/" className="flex items-center justify-center w-10 h-10 md:w-14 md:h-14 rounded-full bg-white shadow-md overflow-hidden">
+          <a href="/" className="flex items-center justify-center w-10 h-10 md:w-14 md:h-14 rounded-full bg-white shadow-sm overflow-hidden border border-gray-50 transition-transform duration-300 hover:scale-105">
             <img
-              src="/logoc.jpg"        // remplacez par le chemin de votre logo
-              alt="Logo"
+              src="/logo.png"
+              alt="TAKARA Calixte"
               className="w-full h-full object-cover"
             />
           </a>
         </div>
 
-        {/* Liens desktop */}
+        {/* Liens Desktop (Orange & Soulignés dynamiquement) */}
         <div className="hidden md:flex items-center space-x-8">
-          {navLinks.map((link) => (
-            <a
-              key={link}
-              href="#"
-              className="text-gray-900 hover:text-yellow-600 font-medium text-lg transition"
-            >
-              {link}
-            </a>
-          ))}
+          {navLinks.map((link) => {
+            const isActive = activeSection === link.href;
+            return (
+              <a
+                key={link.name}
+                href={link.href}
+                className={`relative font-medium text-sm lg:text-base transition-colors duration-300 py-2 group ${
+                  isActive ? 'text-[#D35111]' : 'text-slate-800 hover:text-[#D35111]'
+                }`}
+              >
+                {link.name}
+                <span className={`absolute bottom-0 left-0 h-[2px] bg-[#D35111] transition-transform duration-300 origin-left rounded-full ${
+                  isActive ? 'w-full scale-x-100' : 'w-full scale-x-0 group-hover:scale-x-100'
+                }`} />
+              </a>
+            );
+          })}
         </div>
 
-        {/* Nouveaux icônes : LinkedIn, Contact (personne), Email */}
-        <div className="hidden md:flex items-center space-x-4">
-          {/* LinkedIn */}
-          <a href="https://www.linkedin.com/in/kondéabalo-calixte-takara-589b46347" className="text-gray-600 hover:text-yellow-600 transition" aria-label="LinkedIn">
-            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C0.792 0 0 0.774 0 1.729v20.542C0 23.227 0.792 24 1.771 24h20.451c0.979 0 1.771-0.773 1.771-1.729V1.729C24 0.774 23.202 0 22.222 0h.003z" />
-            </svg>
+        {/* Icônes de droite */}
+        <div className="hidden md:flex items-center space-x-3">
+          <a 
+            href="https://linkedin.com" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="p-2.5 rounded-full text-slate-600 hover:text-[#D35111] hover:bg-slate-50 transition-all duration-300" 
+            aria-label="LinkedIn"
+          >
+            <FiLinkedin className="w-5 h-5" />
           </a>
-          {/* Contact (icône utilisateur) */}
-          <a href="tel:+22893604712" className="text-gray-600 hover:text-yellow-600 transition" aria-label="Contact">
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-            </svg>
+          
+          <a 
+            href="tel:+22893604712" 
+            className="p-2.5 rounded-full text-slate-600 hover:text-[#D35111] hover:bg-slate-50 transition-all duration-300" 
+            aria-label="Téléphone"
+          >
+            <FiPhone className="w-5 h-5" />
           </a>
-          {/* Email */}
-          <a href="mailto:calixtetakara5@gmail.com" className="text-gray-600 hover:text-yellow-600 transition" aria-label="Email">
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-            </svg>
+          
+          <a 
+            href="mailto:calixtetakara5@gmail.com" 
+            className="p-2.5 rounded-full text-slate-600 hover:text-[#D35111] hover:bg-slate-50 transition-all duration-300" 
+            aria-label="Email"
+          >
+            <FiMail className="w-5 h-5" />
           </a>
         </div>
 
         {/* Hamburger mobile */}
-        <div className="md:hidden">
-          <button onClick={() => setIsOpen(!isOpen)} className="text-gray-700 hover:text-yellow-600" aria-label="Menu">
-            <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              {isOpen
-                ? <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                : <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              }
-            </svg>
+        <div className="md:hidden flex items-center">
+          <button 
+            onClick={() => setIsOpen(!isOpen)} 
+            className="p-2 rounded-full text-slate-700 hover:text-[#D35111] hover:bg-slate-50 transition-colors duration-300 focus:outline-none" 
+            aria-label="Menu"
+          >
+            {isOpen ? <FiX className="h-6 w-6" /> : <FiMenu className="h-6 w-6" />}
           </button>
         </div>
       </nav>
 
-      {/* Menu mobile (contenu centré) */}
-      {isOpen && (
-        <div className="fixed top-24 left-1/2 -translate-x-1/2 w-[90%] z-40 bg-white/90 backdrop-blur-md rounded-2xl shadow-lg px-6 py-4 md:hidden">
-          <div className="flex flex-col items-center space-y-3">
-            {navLinks.map((link) => (
-              <a
-                key={link}
-                href="#"
-                className="text-gray-800 hover:text-yellow-600 font-medium py-2 text-center"
-                onClick={() => setIsOpen(false)}
-              >
-                {link}
-              </a>
-            ))}
-            {/* Icônes sociales sur mobile (LinkedIn, Contact, Email) */}
-            <div className="flex justify-center space-x-6 pt-4 border-t border-gray-200 w-full">
-              <a href="https://www.linkedin.com/in/kondéabalo-calixte-takara-589b46347" className="text-gray-600 hover:text-blue-700 transition" aria-label="LinkedIn">
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C0.792 0 0 0.774 0 1.729v20.542C0 23.227 0.792 24 1.771 24h20.451c0.979 0 1.771-0.773 1.771-1.729V1.729C24 0.774 23.202 0 22.222 0h.003z" />
-                </svg>
-              </a>
-              <a href="tel:+22893604712" className="text-gray-600 hover:text-yellow-600 transition" aria-label="Contact">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                </svg>
-              </a>
-              <a href="mailto:calixtetakara5@gmail.com" className="text-gray-600 hover:text-yellow-600 transition" aria-label="Email">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
-              </a>
+      {/* Menu mobile animé */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95, y: -10 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: -10 }}
+            transition={{ duration: 0.2 }}
+            className="fixed top-24 left-1/2 -translate-x-1/2 w-[90%] z-40 bg-white/95 backdrop-blur-md rounded-2xl shadow-[0_20px_40px_rgba(0,0,0,0.1)] px-6 py-6 md:hidden border border-gray-100"
+            style={{ fontFamily: "'Poppins', sans-serif" }}
+          >
+            <div className="flex flex-col items-center space-y-4">
+              {navLinks.map((link) => {
+                const isActive = activeSection === link.href;
+                return (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    className={`font-medium py-2 text-center text-lg w-full transition-colors ${
+                      isActive ? 'text-[#D35111]' : 'text-slate-800 hover:text-[#D35111]'
+                    }`}
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {link.name}
+                  </a>
+                );
+              })}
+              
+              <div className="flex justify-center space-x-6 pt-4 border-t border-gray-100 w-full text-slate-600">
+                <a 
+                  href="https://linkedin.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="hover:text-[#D35111] transition-colors p-2" 
+                  aria-label="LinkedIn"
+                >
+                  <FiLinkedin className="w-5 h-5" />
+                </a>
+                <a 
+                  href="tel:+22893604712" 
+                  className="hover:text-[#D35111] transition-colors p-2" 
+                  aria-label="Téléphone"
+                >
+                  <FiPhone className="w-5 h-5" />
+                </a>
+                <a 
+                  href="mailto:calixtetakara5@gmail.com" 
+                  className="hover:text-[#D35111] transition-colors p-2" 
+                  aria-label="Email"
+                >
+                  <FiMail className="w-5 h-5" />
+                </a>
+              </div>
             </div>
-          </div>
-        </div>
-      )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 };
