@@ -7,7 +7,7 @@ export default function Artiste(): React.JSX.Element {
   const parcours = [
     {
       annee: "Prés.",
-      titre: "Licence Pro — Architecture Logiciel (L2)",
+      titre: "Licence Professionnelle en Génie Logiciel (L2)",
       sous: "Université de Kara"
     },
     {
