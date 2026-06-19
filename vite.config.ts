@@ -10,13 +10,8 @@ export default defineConfig({
     tailwindcss(),
     VitePWA({
       registerType: 'autoUpdate',
-      // CORRECTION 1 : On ajoute explicitement vos images principales dans les assets de base
-      includeAssets: ['favicon.ico', 'logo1.png', 'apple-touch-icon.png', 'My.jpg', 'calixte.png'],
-      
-      // CORRECTION 2 : Configuration de Workbox pour mettre en cache TOUTES les images automatiquement
-      workbox: {
-        globPatterns: ['**/*.{js,css,html,ico,png,svg,jpg,jpeg,webp}'], // Cache tous les formats d'images du projet
-      },
+      // Retour à la configuration initiale : uniquement les icônes de base de l'application
+      includeAssets: ['favicon.ico', 'logo1.png', 'apple-touch-icon.png'],
       manifest: {
         name: 'TAKARA K. Calixte — Portfolio',
         short_name: 'Takara Calixte',
