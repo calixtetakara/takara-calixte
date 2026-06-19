@@ -100,7 +100,7 @@ export default function ProjectsSection(): React.JSX.Element {
       id: 1,
       titre: "Application Mobile de Vente",
       description: "Conception complète d'une interface d'achat fluide et optimisée avec gestion du panier et de l'authentification native.",
-      image: "/final1.jpg",
+      image: "/cabinet.jpg",
       lienGithub: "https://github.com...",
       lienLive: "https://mon-app-demo.com",
     },
