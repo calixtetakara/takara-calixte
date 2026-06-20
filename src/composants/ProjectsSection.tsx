@@ -98,51 +98,52 @@ export default function ProjectsSection(): React.JSX.Element {
   const mesProjets: Projet[] = [
     {
       id: 1,
-      titre: "Application Mobile de Vente",
-      description: "Conception complète d'une interface d'achat fluide et optimisée avec gestion du panier et de l'authentification native.",
+      titre: "Site d'Entreprise — 2SP Consulting",
+      description: "Conception complète du site d'entreprise pour le cabinet 2SP Consulting, intégrant leurs catalogues d'expertises métiers en analyse de données, cartographie et formation.",
       image: "/cabinet.jpg",
-      lienGithub: "https://github.com...",
+      lienGithub: "https://github.com/calixtetakara/Consulting",
       lienLive: "https://consulting-chi-lilac.vercel.app/",
     },
     {
       id: 2,
-      titre: "Affiches Événementielles - Festival",
-      description: "Série d'affiches publicitaires et de flyers modernes imprimés pour un festival culturel international.",
-      image: "/eva.jpg",
-      lienGithub: "https://github.com...",
+      titre: "Portfolio Concept — Eva Guéhi",
+      description: "Projet d'entraînement intensif axé sur le design d'interface et l'intégration web. Création d'un univers visuel épuré et poétique sur-mesure pour une actrice",
+      image: "/eva1.jpg",
+      lienGithub: "https://github.com/calixtetakara/Eva",
       lienLive: "https://eva-guehi.vercel.app/",
     },
     {
       id: 3,
-      titre: "Plateforme Web E-Commerce",
-      description: "Architecture web moderne et responsive, connectée à des APIs sécurisées pour une gestion fluide des produits.",
+      titre: "Plateforme Web ChainCacao • Miabé Hackathon",
+      description: "Développement en équipe d'une solution de traçabilité transparente pour le café et cacao togolais.",
       image: "/cacao.jpg",
       lienGithub: "https://github.com...",
       lienLive: "https://tracabilit-web.vercel.app/",
     },
     {
       id: 4,
-      titre: "Identité Visuelle & Logos Corporatifs",
-      description: "Création complète de logos et déclinaison de chartes graphiques pour des entreprises du secteur technologique.",
-      image: "/projet-design2.jpg",
-      lienGithub: "https://github.com...",
-      lienLive: "https://behance.net...",
+      titre: "MarketShop — Application E-Commerce",
+      description: "MVP applicatif multiplateforme développé avec Flutter (Dart) suivant l'architecture MVVM. Intégration de l'API REST FakeStore",
+      image: "/mobile.jpg",
+      lienGithub: "https://github.com/calixtetakara/marketshop-flutter-calixte-takara",
+      lienLive: "#",
     },
+    
     {
       id: 5,
-      titre: "Projet Web 3 - Portfolio",
-      description: "Intégration d'un site vitrine haut de gamme avec animations complexes pour un studio de création digital.",
-      image: "/projet-vitrine.jpg",
-      lienGithub: "https://github.com...",
-      lienLive: "https://mon-portfolio.com",
+      titre: "Affiche Événementielle — Luttes Evala",
+      description: "Conception graphique complète de l'affiche pour la 17e édition des luttes Evala à Kara. Travail approfondi sur l'identité culturelle togolaise, ",
+      image: "/evala2.jpg",
+      lienGithub: "#",
+      lienLive: "/uio.jpg",
     },
     {
       id: 6,
-      titre: "Flyers & Brochures Corporatives",
-      description: "Mise en page et création graphique de livrets commerciaux imprimés pour une agence événementielle.",
-      image: "/projet-flyer.jpg",
-      lienGithub: "https://github.com...",
-      lienLive: "https://behance.net...",
+      titre: "Affiche Publicitaire — Design Service",
+      description: "Conception graphique du visuel publicitaire pour la promotion de services créatifs. ",
+      image: "/lo.jpg",
+      lienGithub: "#",
+      lienLive: "/Service copie.jpg",
     },
   ];
 
@@ -200,7 +201,7 @@ export default function ProjectsSection(): React.JSX.Element {
           <div className="flex gap-6 flex-wrap justify-center">
             {/* Bouton Graphisme (Behance / Drive) */}
             <a
-              href="https://behance.net" 
+              href="#" 
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-gray-50 border border-gray-200 hover:border-slate-950 px-6 py-3 rounded-full text-xs font-bold text-slate-900 transition-all duration-300 shadow-sm group"
@@ -211,7 +212,7 @@ export default function ProjectsSection(): React.JSX.Element {
 
             {/* Bouton Code (GitHub) */}
             <a
-              href="https://github.com" 
+              href="#" 
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-slate-900 border border-transparent hover:bg-[#D35111] px-6 py-3 rounded-full text-xs font-bold text-white transition-all duration-300 shadow-md group"
