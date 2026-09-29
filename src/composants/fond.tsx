@@ -12,7 +12,7 @@ interface FondProps {
 }
 
 const Fond: React.FC<FondProps> = ({
-  imageUrl = "/background.jpg",
+  imageUrl = "/pic/background.webp",
   children,
   height = "min-h-screen",
   overlayOpacity = 0.3,

@@ -15,7 +15,7 @@ export default function Footer(): React.JSX.Element {
   return (
     <footer 
       className="w-full border-t border-gray-100 py-16 px-6 md:px-12 relative overflow-hidden bg-cover bg-center bg-no-repeat" 
-      style={{ backgroundImage: "url('/background.jpg')" }}
+      style={{ backgroundImage: "url('/pic/background.webp')" }}
     >
       
       {/* Voile blanc transparent pour tamiser doucement l'image d'arrière-plan */}

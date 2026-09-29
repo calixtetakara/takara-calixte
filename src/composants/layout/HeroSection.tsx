@@ -5,7 +5,7 @@ interface HeroSectionProps {
   imageSrc?: string;
 }
 
-const HeroSection: React.FC<HeroSectionProps> = ({ imageSrc = "/calixte.png" }) => {
+const HeroSection: React.FC<HeroSectionProps> = ({ imageSrc = "/pic/calixte.webp" }) => {
   // Configuration typée pour l'effet cascade (stagger) des textes à gauche
   const containerVariants: Variants = {
     hidden: { opacity: 0 },

@@ -10,7 +10,7 @@ const Accueil: React.FC = () => {
   return (
     
       <div className="flex flex-col min-h-screen ">
-        <Fond imageUrl="/background.jpg">
+        <Fond imageUrl="/pic/background.webp" >
            <Navbar />
             <HeroSection />
          </Fond>

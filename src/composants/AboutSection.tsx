@@ -48,7 +48,7 @@ export default function Artiste(): React.JSX.Element {
           <div className="relative w-full max-w-[420px] lg:max-w-none aspect-[3/4] rounded-[24px] overflow-visible group">
             <div className="w-full h-full rounded-[24px] overflow-hidden shadow-sm">
               <img
-                src="/My.jpg"
+                src="/pic/My.webp"
                 alt="Développeur et Graphiste"
                 className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
               />
