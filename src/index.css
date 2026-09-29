@@ -183,7 +183,7 @@ body {
   }
 }
 
-/* ── Colonne droite ── */
+/* ── Colonne droite (Optimisée pour LCP & CLS) ── */
 .hero-right {
   flex: 1;
   display: flex;
@@ -194,6 +194,15 @@ body {
 
 .hero-img-wrap {
   position: relative;
+  /* Réserve l'espace exact de l'image (ratio 4:5) avant son chargement complet pour éviter le CLS */
+  aspect-ratio: 4 / 5;
+  width: clamp(250px, 38vw, 380px);
+}
+
+@media (min-width: 768px) {
+  .hero-img-wrap {
+    width: clamp(260px, 28vw, 380px);
+  }
 }
 
 .hero-img-glow {
@@ -208,19 +217,12 @@ body {
 .hero-img {
   position: relative;
   z-index: 1;
-  width: clamp(250px, 38vw, 380px);
-  max-height: 150vh;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   object-position: top;
   display: block;
-  animation: fadeIn 0.7s 0.2s ease both;
-}
-
-@media (min-width: 768px) {
-  .hero-img {
-    width: clamp(260px, 28vw, 380px);
-    max-height: none;
-  }
+  /* L'animation fadeIn a été retirée pour un affichage LCP instantané */
 }
 
 /* ── Nom ── */
@@ -306,9 +308,4 @@ body {
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(12px); }
   to   { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
 }

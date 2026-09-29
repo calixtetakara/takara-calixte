@@ -60,7 +60,7 @@ const Navbar: React.FC = () => {
         <div className="flex-shrink-0">
           <a href="/" className="flex items-center justify-center w-10 h-10 md:w-14 md:h-14 rounded-full bg-white shadow-sm overflow-hidden border border-gray-50 transition-transform duration-300 hover:scale-105">
             <img
-              src="/logo.png"
+              src="/pic/logo.webp"
               alt="TAKARA Calixte"
               className="w-full h-full object-cover"
             />

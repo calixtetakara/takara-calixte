@@ -1,7 +1,7 @@
 # Portfolio Numerique — TAKARA Kondeabalo Calixte
 
 <p align="center">
-  <img src="public/logo.png" alt="Logo" width="120" height="120" style="border-radius: 50%"/>
+  <img src="public/pic/logo.webp" alt="Logo" width="120" height="120" style="border-radius: 50%"/>
 </p>
 
 <p align="center">
